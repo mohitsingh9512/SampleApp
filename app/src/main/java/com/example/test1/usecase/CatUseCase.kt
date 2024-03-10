@@ -4,7 +4,7 @@ import android.content.Context
 import com.example.listcomponent.datamodel.BaseDataModel
 import com.example.listcomponent.network.Async
 import com.example.test1.di.scope.ApplicationScope
-import com.example.test1.extensions.AppExtensions
+import com.example.test1.extensions.AppUtils
 import com.example.test1.repo.CatsRepository
 import com.example.test1.ui.viewholder.uimodel.toUIModel
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +24,7 @@ class CatUseCase @Inject constructor(
 
     suspend fun getBreeds()  {
         withContext(Dispatchers.IO){
-            if(!AppExtensions.isNetworkAvailable(context)){
+            if(!AppUtils.isNetworkAvailable(context)){
                 repository.getBreedsFromDb()
                     .map {
                         it.data.toUIModel()
