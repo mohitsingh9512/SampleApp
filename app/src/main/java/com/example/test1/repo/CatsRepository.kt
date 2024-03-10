@@ -1,10 +1,9 @@
 package com.example.test1.repo
 
 import com.example.test1.network.api.MainApiInterface
-import com.example.test1.network.request.Async
+import com.example.listcomponent.network.Async
 import com.example.test1.network.response.CatBreedModel
 import com.example.test1.persistance.CatBreedsDao
-import dagger.assisted.AssistedInject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

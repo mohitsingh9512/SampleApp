@@ -1,4 +1,4 @@
-package com.example.test1.ui.viewholder.uimodel
+package com.example.listcomponent.datamodel
 
 interface BaseDataModel {
     val uniqueId: String

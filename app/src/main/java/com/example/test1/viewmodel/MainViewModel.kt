@@ -2,8 +2,8 @@ package com.example.test1.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.test1.network.request.Async
-import com.example.test1.ui.viewholder.uimodel.BaseDataModel
+import com.example.listcomponent.network.Async
+import com.example.listcomponent.datamodel.BaseDataModel
 import com.example.test1.usecase.CatUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,8 +1,8 @@
-package com.example.test1.ui.viewholder.ui
+package com.example.listcomponent.viewholder
 
 import android.view.View
-import com.example.test1.R
-import com.example.test1.ui.viewholder.uimodel.EmptyDataModel
+import com.example.listcomponent.R
+import com.example.listcomponent.datamodel.EmptyDataModel
 
 class EmptyViewHolder(view: View) : AbstractViewHolder<EmptyDataModel>(view){
 

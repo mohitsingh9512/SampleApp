@@ -2,6 +2,7 @@ package com.example.test1.ui.viewholder.ui
 
 import android.view.View
 import android.widget.TextView
+import com.example.listcomponent.viewholder.AbstractViewHolder
 import com.example.test1.R
 import com.example.test1.ui.adapter.CatBreedInterface
 import com.example.test1.ui.viewholder.uimodel.CatBreedDataModel

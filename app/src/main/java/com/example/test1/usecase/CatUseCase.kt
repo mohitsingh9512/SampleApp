@@ -1,9 +1,9 @@
 package com.example.test1.usecase
 
 import android.content.Context
+import com.example.listcomponent.network.Async
 import com.example.test1.di.scope.ApplicationScope
 import com.example.test1.extensions.isNetworkAvailable
-import com.example.test1.network.request.Async
 import com.example.test1.repo.CatsRepository
 import com.example.test1.ui.viewholder.uimodel.CatBreedDataModel
 import com.example.test1.ui.viewholder.uimodel.toUIModel

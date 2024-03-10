@@ -2,12 +2,11 @@ package com.example.test1.ui.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.test1.MyApplication
 
 open class BaseActivity : AppCompatActivity() {
 
     private val appComponent
-        get() = (application as MyApplication).appComponent
+        get() = (application as com.example.test1.MyApplication).appComponent
 
     private val activityComponent by lazy {
         appComponent.activityComponent()

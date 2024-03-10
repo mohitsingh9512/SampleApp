@@ -1,4 +1,4 @@
-package com.example.test1.network.request
+package com.example.listcomponent.network
 
 sealed class Async<out T> {
 

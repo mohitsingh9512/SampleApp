@@ -17,7 +17,7 @@ import com.example.test1.di.factory.ViewModelProviderFactory
 import com.example.test1.ui.adapter.CatBreedInterface
 import com.example.test1.ui.adapter.MainAdapter
 import com.example.test1.ui.base.BaseFragment
-import com.example.test1.ui.viewholder.uimodel.BaseDataModel
+import com.example.listcomponent.datamodel.BaseDataModel
 import com.example.test1.ui.viewholder.uimodel.CatBreedDataModel
 import com.example.test1.viewmodel.MainUiState
 import com.example.test1.viewmodel.MainViewModel
