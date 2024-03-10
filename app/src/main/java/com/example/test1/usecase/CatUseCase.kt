@@ -1,11 +1,11 @@
 package com.example.test1.usecase
 
 import android.content.Context
+import com.example.listcomponent.datamodel.BaseDataModel
 import com.example.listcomponent.network.Async
 import com.example.test1.di.scope.ApplicationScope
-import com.example.test1.extensions.isNetworkAvailable
+import com.example.test1.extensions.AppExtensions
 import com.example.test1.repo.CatsRepository
-import com.example.test1.ui.viewholder.uimodel.CatBreedDataModel
 import com.example.test1.ui.viewholder.uimodel.toUIModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,12 +19,12 @@ class CatUseCase @Inject constructor(
     private val repository: CatsRepository
 ) {
 
-    private val _breeds = MutableStateFlow<Async<List<CatBreedDataModel>>>(Async.None)
-    val breeds: StateFlow<Async<List<CatBreedDataModel>>> = _breeds
+    private val _breeds = MutableStateFlow<Async<List<BaseDataModel>>>(Async.None)
+    val breeds: StateFlow<Async<List<BaseDataModel>>> = _breeds
 
     suspend fun getBreeds()  {
         withContext(Dispatchers.IO){
-            if(!context.isNetworkAvailable()){
+            if(!AppExtensions.isNetworkAvailable(context)){
                 repository.getBreedsFromDb()
                     .map {
                         it.data.toUIModel()

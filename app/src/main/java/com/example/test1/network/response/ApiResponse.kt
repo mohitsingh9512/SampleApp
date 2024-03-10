@@ -2,7 +2,9 @@ package com.example.test1.network.response
 
 
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import com.example.test1.network.api.API_CAT_IMAGE
 import com.google.gson.annotations.SerializedName
 
 @Entity
@@ -17,12 +19,7 @@ data class CatBreedModel(
     @SerializedName("origin")
     val origin: String? = "",
     @SerializedName("life_span")
-    val lifeSpan: String? = ""
-)
-
-data class CatBreedDetailModel(
-    @SerializedName("id")
-    val id: String? = "",
-    @SerializedName("url")
-    val url: String? = ""
+    val lifeSpan: String? = "",
+    @SerializedName("reference_image_id")
+    val reference_image_id: String? = "",
 )

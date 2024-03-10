@@ -17,8 +17,7 @@ class MainActivity : BaseActivity() {
                 .beginTransaction()
                 .replace(
                     R.id.content_frame,
-                    MainFragment.newInstance(Bundle())
-                )
+                    MainFragment.newInstance(Bundle()))
                 .commit()
         }
     }

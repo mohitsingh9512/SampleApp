@@ -31,10 +31,6 @@ class MainViewModel @Inject constructor(private val catUseCase: CatUseCase): Vie
     private val _isLoading = MutableStateFlow(false)
     private val _result =  catUseCase.breeds
 
-    init {
-        getBreeds()
-    }
-
     val uiState: StateFlow<MainUiState> = combine(
          _isLoading, _userMessage, _result
     ) { loading, message, result ->
