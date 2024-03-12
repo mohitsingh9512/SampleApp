@@ -34,11 +34,6 @@ class AppModule(private var application: Application) {
     }
 
     @Provides
-    fun providesCatBreedDao(db: BaseDatabase): CatBreedsDao {
-        return db.getCatBreedsDao()
-    }
-
-    @Provides
     fun provideAppDb(@ApplicationScope app: Application): BaseDatabase {
         return Room
             .databaseBuilder(app, BaseDatabase::class.java, BaseDatabase.DATABASE_NAME)
@@ -46,5 +41,4 @@ class AppModule(private var application: Application) {
             .fallbackToDestructiveMigration()
             .build()
     }
-
 }

@@ -2,10 +2,11 @@ package com.example.test1.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.listcomponent.network.Async
 import com.example.listcomponent.datamodel.BaseDataModel
+import com.example.listcomponent.network.Async
+import com.example.test1.di.scope.IoDispatcher
 import com.example.test1.usecase.CatUseCase
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -25,14 +26,14 @@ sealed class MainUiState {
     data object None : MainUiState()
 }
 
-class MainViewModel @Inject constructor(private val catUseCase: CatUseCase): ViewModel() {
+class MainViewModel @Inject constructor(
+    private val catUseCase: CatUseCase,
+    @IoDispatcher private val dispatcher: CoroutineDispatcher,
+): ViewModel() {
 
     private val _userMessage = MutableStateFlow(null)
     private val _isLoading = MutableStateFlow(false)
-    private val _result =  catUseCase.breeds
-
-    val uiState: StateFlow<MainUiState> = combine(
-         _isLoading, _userMessage, _result
+    val uiState: StateFlow<MainUiState> =  combine(_isLoading, _userMessage, catUseCase.getBreeds()
     ) { loading, message, result ->
         when(result){
             Async.Loading -> {
@@ -44,9 +45,9 @@ class MainViewModel @Inject constructor(private val catUseCase: CatUseCase): Vie
             }
 
             is Async.Success -> {
-                 MainUiState.SuccessItems(
+                MainUiState.SuccessItems(
                     items = result.data
-                 )
+                )
             }
 
             is Async.None -> {
@@ -56,11 +57,11 @@ class MainViewModel @Inject constructor(private val catUseCase: CatUseCase): Vie
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(1000),
-                initialValue = MainUiState.Loading(isLoading = true)
+        initialValue = MainUiState.Loading(isLoading = true)
     )
 
     fun getBreeds(){
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             catUseCase.getBreeds()
         }
     }

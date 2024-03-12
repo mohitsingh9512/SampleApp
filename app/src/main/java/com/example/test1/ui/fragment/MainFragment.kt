@@ -53,7 +53,7 @@ class MainFragment : BaseFragment(), CatBreedInterface {
         mainViewModel = ViewModelProvider(this, viewModelProviderFactory)[MainViewModel::class.java]
         setUpViews(view)
         setUpObserver()
-        fetchPageData()
+        //fetchPageData()
     }
 
     private fun setUpViews(view: View) {
